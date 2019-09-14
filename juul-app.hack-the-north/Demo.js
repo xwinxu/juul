@@ -14,11 +14,6 @@ export default class Demo extends React.Component {
 
   onViewableItemsChanged = (info) => {
     this.setState({ highestItem: JSON.stringify(info) })
-    // viewableItems.forEach(item => {
-    //   if(item.key > highestItem){
-    //
-    //   }
-    // })
   }
 
   handleScrollEvent = (ev) => {
@@ -93,7 +88,7 @@ export default class Demo extends React.Component {
             {els}
           </ScrollView>
           <TouchableOpacity
-            onPress={() => {}} 
+            onPress={() => {}}
             style={{top: 250, left: 130, backgroundColor: 'black', borderRadius: 25, height: 40, width: '40%', position: 'absolute', justifyContent: 'center', alignItems: 'center'}}
           >
           <Text style={{color: 'white'}}>Select</Text>
