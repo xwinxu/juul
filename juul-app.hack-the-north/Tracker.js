@@ -131,6 +131,7 @@ this.state.heightME2,             // The animated value to drive, this would be 
             <ProgressCircle style={{ height: 100, marginTop: 24, zIndex: 1000 }} progress={this.state.progress2}  progressColor={'#3976E4'} backgroundColor={'transparent'}  animate={true}/>
             <ProgressCircle style={{ height: 70, marginTop: -82, zIndex: 1000 }} progress={this.state.progress} startAngle={.7 * 360} progressColor={'#5ABFE6'} backgroundColor={'transparent'} animate={true}/>
             <Text style={{marginTop: -40, marginLeft: 185, fontWeight: '700', fontSize: 20}}><AnimateNumber value={42} timing="easeIn" countBy={1} steps={40} interval={4}/>%</Text>
+            <Text style={{color: 'grey', fontSize: 15, marginLeft: 110, marginTop: 30}}>Average Nicotine Level</Text> 
           </View>
         </View>
       </View>
