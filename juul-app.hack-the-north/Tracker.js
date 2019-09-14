@@ -50,7 +50,7 @@ this.state.heightME2,             // The animated value to drive, this would be 
   render() {
     for(let i = 0; i < 14; i++){
       this.state.renderedBars.push(bar(i, 50, this.state.heightME, this.state.heightME2));
-    } 
+    }
     return (
       <View style={styles.container}>
         <View style={{width: '95%', height: 200}}>
@@ -91,6 +91,23 @@ this.state.heightME2,             // The animated value to drive, this would be 
           </View>
           <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 15}}>
             {this.state.renderedBars}
+          </View>
+        </View>
+        <View style={{width: '95%', height: 200, marginTop: 30}}>
+          <LinearGradient
+            colors={['white', 'white']}
+            start={[0, 5]}
+            style={{
+              left: 0,
+              right: 0,
+              top: 0,
+              width: '100%', height: 200,
+              borderRadius: 15, borderWidth: 0.5, borderColor: 'transparent',
+              position: 'absolute'
+            }}
+          />
+          <View>
+            <Text style={{color: 'black', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>TODAY'S STATS</Text>
           </View>
         </View>
       </View>
