@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Animated } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Animated, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Renderedbar from './RenderedBar';
 const daysOfTheWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
@@ -69,6 +69,10 @@ this.state.heightME2,             // The animated value to drive, this would be 
     }
     return (
       <View style={styles.container}>
+        <View style={{marginTop: -40, marginBottom: 30}}>
+          <Image source={require('./assets/headshot.jpg')} style={{height: 50, width: 50, borderRadius: 30, marginLeft: 30}}/>
+          <Text style={{color: 'white', fontSize: 25}}>John Smith</Text>
+        </View>
         <View style={{width: '95%', height: 200}}>
           <LinearGradient
             colors={['#3D79E4', '#2F58E3']}
@@ -83,7 +87,7 @@ this.state.heightME2,             // The animated value to drive, this would be 
             }}
           />
           <View>
-            <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>DAILY USAGE {this.state.renderedBars.length}</Text>
+            <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>DAILY USAGE</Text>
           </View>
           <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 20}}>
             {this.state.renderedBars}
@@ -124,7 +128,7 @@ this.state.heightME2,             // The animated value to drive, this would be 
           />
           <View>
             <Text style={{color: 'black', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>TODAY'S STATS</Text>
-            <ProgressCircle style={{ height: 100, marginTop: 20, zIndex: 1000 }} progress={this.state.progress2}  progressColor={'#3976E4'} backgroundColor={'transparent'}  animate={true}/>
+            <ProgressCircle style={{ height: 100, marginTop: 24, zIndex: 1000 }} progress={this.state.progress2}  progressColor={'#3976E4'} backgroundColor={'transparent'}  animate={true}/>
             <ProgressCircle style={{ height: 70, marginTop: -82, zIndex: 1000 }} progress={this.state.progress} startAngle={.7 * 360} progressColor={'#5ABFE6'} backgroundColor={'transparent'} animate={true}/>
             <Text style={{marginTop: -40, marginLeft: 185, fontWeight: '700', fontSize: 20}}><AnimateNumber value={42} timing="easeIn" countBy={1} steps={40} interval={4}/>%</Text>
           </View>
