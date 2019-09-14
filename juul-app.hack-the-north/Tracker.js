@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Animated } from '
 import { LinearGradient } from 'expo-linear-gradient';
 import Renderedbar from './RenderedBar';
 const daysOfTheWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+import { ProgressCircle } from 'react-native-svg-charts'
+import AnimateNumber from 'react-native-animate-number'
+
 
 
 const bar = (index, fillPercentage, heightStatus, secondHeightStatus, heightVal) => {
@@ -24,6 +27,7 @@ export default class Demo extends React.Component {
       renderedBars: [],
       heightME: new Animated.Value(0),
       heightME2: new Animated.Value(0),
+      todayStatPercentage: 78
     };
   }
 
@@ -108,6 +112,9 @@ this.state.heightME2,             // The animated value to drive, this would be 
           />
           <View>
             <Text style={{color: 'black', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>TODAY'S STATS</Text>
+            <ProgressCircle style={{ height: 100, marginTop: 20, zIndex: 1000 }} progress={0.7} progressColor={'#3976E4'} backgroundColor={'transparent'} />
+            <ProgressCircle style={{ height: 70, marginTop: -80, zIndex: 1000 }} progress={0.5} startAngle={.7 * 360} progressColor={'#5ABFE6'} backgroundColor={'transparent'} />
+            <Text style={{marginTop: -50, marginLeft: 185, fontWeight: '700', fontSize: 20}}><AnimateNumber value={42} timing="easeIn" countBy={1} steps={40} interval={4}/>%</Text>
           </View>
         </View>
       </View>
