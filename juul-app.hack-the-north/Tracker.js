@@ -12,7 +12,7 @@ const bar = (index, fillPercentage, heightStatus, secondHeightStatus, heightVal)
   const height = Math.floor(Math.random() * 10) * 7;
   const dayOfTheWeek = daysOfTheWeek[index % 7];
   return (
-    <Renderedbar key={index} heightStatus={heightStatus} secondHeightStatus={secondHeightStatus} dayOfTheWeek={dayOfTheWeek} actualHeight={height}/>
+    <Renderedbar key={index + Math.random()} heightStatus={heightStatus} secondHeightStatus={secondHeightStatus} dayOfTheWeek={dayOfTheWeek} actualHeight={height}/>
   )
 }
 
@@ -25,9 +25,14 @@ export default class Demo extends React.Component {
     super(props);
     this.state = {
       renderedBars: [],
+      renderedBars2: [],
       heightME: new Animated.Value(0),
       heightME2: new Animated.Value(0),
-      todayStatPercentage: 78
+      heightME3: new Animated.Value(0),
+      heightME4: new Animated.Value(0),
+      todayStatPercentage: 78,
+      progress: 0,
+      progress2: 0
     };
   }
 
@@ -48,12 +53,19 @@ this.state.heightME2,             // The animated value to drive, this would be 
 }
 ).start()
 
+  setTimeout(() => {
+    this.setState({progress: 0.5})
+  }, 100)
+  setTimeout(() => {
+    this.setState({progress2: 0.7})
+  }, 100)
+
   }
 
 
   render() {
     for(let i = 0; i < 14; i++){
-      this.state.renderedBars.push(bar(i, 50, this.state.heightME, this.state.heightME2));
+      this.state.renderedBars[i] = (bar(i, 50, this.state.heightME, this.state.heightME2));
     }
     return (
       <View style={styles.container}>
@@ -71,9 +83,9 @@ this.state.heightME2,             // The animated value to drive, this would be 
             }}
           />
           <View>
-            <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>DAILY USAGE</Text>
+            <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>DAILY USAGE {this.state.renderedBars.length}</Text>
           </View>
-          <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 15}}>
+          <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 20}}>
             {this.state.renderedBars}
           </View>
         </View>
@@ -93,7 +105,7 @@ this.state.heightME2,             // The animated value to drive, this would be 
           <View>
             <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>DAILY NICOTINE CONSUMPTION</Text>
           </View>
-          <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 15}}>
+          <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 20}}>
             {this.state.renderedBars}
           </View>
         </View>
@@ -112,9 +124,9 @@ this.state.heightME2,             // The animated value to drive, this would be 
           />
           <View>
             <Text style={{color: 'black', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>TODAY'S STATS</Text>
-            <ProgressCircle style={{ height: 100, marginTop: 20, zIndex: 1000 }} progress={0.7} progressColor={'#3976E4'} backgroundColor={'transparent'} />
-            <ProgressCircle style={{ height: 70, marginTop: -80, zIndex: 1000 }} progress={0.5} startAngle={.7 * 360} progressColor={'#5ABFE6'} backgroundColor={'transparent'} />
-            <Text style={{marginTop: -50, marginLeft: 185, fontWeight: '700', fontSize: 20}}><AnimateNumber value={42} timing="easeIn" countBy={1} steps={40} interval={4}/>%</Text>
+            <ProgressCircle style={{ height: 100, marginTop: 20, zIndex: 1000 }} progress={this.state.progress2}  progressColor={'#3976E4'} backgroundColor={'transparent'}  animate={true}/>
+            <ProgressCircle style={{ height: 70, marginTop: -82, zIndex: 1000 }} progress={this.state.progress} startAngle={.7 * 360} progressColor={'#5ABFE6'} backgroundColor={'transparent'} animate={true}/>
+            <Text style={{marginTop: -40, marginLeft: 185, fontWeight: '700', fontSize: 20}}><AnimateNumber value={42} timing="easeIn" countBy={1} steps={40} interval={4}/>%</Text>
           </View>
         </View>
       </View>
