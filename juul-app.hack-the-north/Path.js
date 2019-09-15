@@ -48,7 +48,7 @@ export default class Path extends React.Component {
         </View>
         <View style={{flexDirection: 'row', marginTop: 15, marginLeft: 20}}>
         <View style={{ height: 300, flexDirection: 'row' }}>
-        <View style={{ height: 200, flexDirection: 'row', width: '95%' }}>
+        <View style={{ height: 200, flexDirection: 'row', width: '95%', borderColor: 'white', borderWidth: .5, borderRadius: 10, paddingLeft: 10 }}>
         <LinearGradient
           colors={['#3D79E4', '#2F58E3']}
           start={[0, 5]}
@@ -100,7 +100,7 @@ export default class Path extends React.Component {
           </View>
         </View>
       </View>
-      <TouchableOpacity style={{height: 30, width: 200, backgroundColor: 'white'}}
+      <TouchableOpacity style={{height: 40, width: 200, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
       onPress={() => this.handleRequest()}>
         <Text style={{color: 'black'}}>Send Request</Text>
         </TouchableOpacity>
