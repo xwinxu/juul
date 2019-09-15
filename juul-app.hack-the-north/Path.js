@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Animated, Image }
 import { ProgressCircle } from 'react-native-svg-charts'
 import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
+import Axios from 'axios';
 
 
 export default class Path extends React.Component {
@@ -16,6 +17,11 @@ export default class Path extends React.Component {
   componentDidMount(){
 
 
+  }
+
+  handleRequest(){
+    console.log('wooo')
+    Axios.get('https://hooks.zapier.com/hooks/catch/298717/o3c72vr?level=6000')
   }
 
 
@@ -54,7 +60,7 @@ export default class Path extends React.Component {
             borderRadius: 15, borderWidth: 0.5, borderColor: 'transparent',
             position: 'absolute'
           }}
-        /> 
+        />
               <YAxis
                   data={margins}
                   contentInset={contentInset}
@@ -94,6 +100,11 @@ export default class Path extends React.Component {
           </View>
         </View>
       </View>
+      <TouchableOpacity style={{height: 30, width: 200, backgroundColor: 'white'}}
+      onPress={() => this.handleRequest()}>
+        <Text style={{color: 'black'}}>Send Request</Text>
+        </TouchableOpacity>
+
       </View>
     );
   }

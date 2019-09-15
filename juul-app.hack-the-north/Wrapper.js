@@ -10,7 +10,7 @@ export default class Wrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayScreenIndex: 0
+      displayScreenIndex: 2
     };
   }
 
