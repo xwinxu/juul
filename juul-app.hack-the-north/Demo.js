@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+console.disableYellowBox = true;
+
 
 export default class Demo extends React.Component {
   constructor(props) {
@@ -32,9 +35,50 @@ export default class Demo extends React.Component {
       this.setState({dosageText: 'Very High'});
     }
   }
+
+  onSwipeUp(gestureState) {
+    this.setState({myText: 'You swiped up!'});
+  }
+
+  onSwipeDown(gestureState) {
+    this.setState({myText: 'You swiped down!'});
+  }
+
+  onSwipeLeft(gestureState) {
+    console.log('you swiped left')
+  }
+
+  onSwipeRight(gestureState) {
+    this.setState({displayScreenIndex: this.state.displayScreenIndex - 1});
+  }
+
+  onSwipe(gestureName, gestureState) {
+    const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
+    this.setState({gestureName: gestureName});
+    switch (gestureName) {
+      case SWIPE_UP:
+        // this.setState({backgroundColor: 'red'});
+        break;
+      case SWIPE_DOWN:
+        // this.setState({backgroundColor: 'green'});
+        break;
+      case SWIPE_LEFT:
+        // this.setState({backgroundColor: 'blue'});
+        break;
+      case SWIPE_RIGHT:
+        // this.setState({backgroundColor: 'yellow'});
+        break;
+    }
+  }
+
+
   render() {
     const self = this;
     const els = [];
+    const config = {
+      velocityThreshold: 0.3,
+      directionalOffsetThreshold: 80
+    };
 
     for(let i = 0; i < 50; i++){
       els.push(
@@ -54,8 +98,11 @@ export default class Demo extends React.Component {
       )
     }
 
+
+
     return (
       <View style={styles.container}>
+
       <LinearGradient
         colors={['#73DBEE', '#4E79E7']}
         start={[self.state.selected / 100, self.state.selected / 100]}
@@ -70,6 +117,24 @@ export default class Demo extends React.Component {
           position: 'absolute'
         }}
       />
+      <GestureRecognizer
+        onSwipe={(direction, state) => this.onSwipe(direction, state)}
+        onSwipeUp={(state) => this.onSwipeUp(state)}
+        onSwipeDown={(state) => this.onSwipeDown(state)}
+        onSwipeLeft={(state) => this.props.handleSwipeLeft(state)}
+        onSwipeRight={(state) => this.props.handleSwipeRight(state)}
+        config={config}
+        style={{
+          width: '100%',
+          height: '50%',
+          zIndex: 1000000,
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          borderWidth: .5,
+          position: 'absolute'
+        }}
+        >
+      </GestureRecognizer>
       <View style={{borderWidth: .5, borderColor: 'transparent', zIndex: 20, height: '45%', width: '80%', top: 310, left: 40, position: 'absolute'}}>
         <Text style={{fontSize: 65, color: 'white', textShadowColor: 'rgba(0, 0, 0, 0.75)', textShadowOffset: {width: -1, height: 1}, textShadowRadius: 10, marginBottom: 25}}>
           {self.state.dosageText}

@@ -12,6 +12,8 @@ export default class Wrapper extends React.Component {
     this.state = {
       displayScreenIndex: 2
     };
+    this.onSwipeLeft = this.onSwipeLeft.bind(this)
+    this.onSwipeRight = this.onSwipeRight.bind(this)
   }
 
   // <Demo style={{flex: 1}}/>
@@ -61,6 +63,10 @@ export default class Wrapper extends React.Component {
       directionalOffsetThreshold: 80
     };
 
+    if(this.state.displayScreenIndex % 3 === 1){
+      return (<Demo style={{flex: 1}} handleSwipeLeft={this.onSwipeLeft} handleSwipeRight={this.onSwipeRight}/>)
+    }
+
     return (
       <GestureRecognizer
         onSwipe={(direction, state) => this.onSwipe(direction, state)}
@@ -74,7 +80,6 @@ export default class Wrapper extends React.Component {
         }}
         >
         {this.state.displayScreenIndex % 3 === 0 ? <Tracker style={{flex: 1}}/> : null }
-        {this.state.displayScreenIndex % 3 === 1 ? <Demo style={{flex: 1}}/> : null }
         {this.state.displayScreenIndex % 3 === 2 ? <Path style={{flex: 1}}/> : null }
       </GestureRecognizer>
     );
