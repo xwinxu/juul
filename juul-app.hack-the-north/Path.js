@@ -100,6 +100,7 @@ export default class Path extends React.Component {
           </View>
         </View>
       </View>
+      <Text style={{color: 'white', fontSize: 20, marginTop: 20, marginLeft: 20, fontWeight: "600"}}>Predicted Recovery Date: September 29, 2019</Text>
       <TouchableOpacity style={{height: 40, width: 200, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', borderRadius: 20}}
       onPress={() => this.handleRequest()}>
         <Text style={{color: 'black'}}>Send Request</Text>

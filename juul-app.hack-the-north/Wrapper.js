@@ -5,6 +5,7 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import Tracker from './Tracker';
 import Demo from './Demo';
 import Path from './Path';
+import Feedback from './Feedback';
 
 export default class Wrapper extends React.Component {
   constructor(props) {
@@ -63,7 +64,7 @@ export default class Wrapper extends React.Component {
       directionalOffsetThreshold: 80
     };
 
-    if(this.state.displayScreenIndex % 3 === 1){
+    if(this.state.displayScreenIndex % 4 === 1){
       return (<Demo style={{flex: 1}} handleSwipeLeft={this.onSwipeLeft} handleSwipeRight={this.onSwipeRight}/>)
     }
 
@@ -79,8 +80,9 @@ export default class Wrapper extends React.Component {
           flex: 1,
         }}
         >
-        {this.state.displayScreenIndex % 3 === 0 ? <Tracker style={{flex: 1}}/> : null }
-        {this.state.displayScreenIndex % 3 === 2 ? <Path style={{flex: 1}}/> : null }
+        {this.state.displayScreenIndex % 4 === 0 ? <Tracker style={{flex: 1}}/> : null }
+        {this.state.displayScreenIndex % 4 === 2 ? <Path style={{flex: 1}}/> : null }
+        {this.state.displayScreenIndex % 4 === 3 ? <Feedback style={{flex: 1}}/> : null }
       </GestureRecognizer>
     );
 

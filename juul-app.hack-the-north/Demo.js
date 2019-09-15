@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 import { LinearGradient } from 'expo-linear-gradient';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 console.disableYellowBox = true;
+import Axios from 'axios';
 
 
 export default class Demo extends React.Component {
@@ -69,6 +70,11 @@ export default class Demo extends React.Component {
         // this.setState({backgroundColor: 'yellow'});
         break;
     }
+  }
+
+  handleRequest(){
+    console.log('wooo2')
+    Axios.get('https://hooks.zapier.com/hooks/catch/298717/o3c72vr?level=' + this.state.selected)
   }
 
 
@@ -153,7 +159,7 @@ export default class Demo extends React.Component {
             {els}
           </ScrollView>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={() => {this.handleRequest()}}
             style={{top: 250, left: 130, backgroundColor: 'black', borderRadius: 25, height: 40, width: '40%', position: 'absolute', justifyContent: 'center', alignItems: 'center'}}
           >
           <Text style={{color: 'white'}}>Select</Text>
