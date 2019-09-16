@@ -1,4 +1,4 @@
-# Hack the North 2019
+# Hack the North 2019 Finalist
 
 ## Background
 Juul has not only taken over the e-cigarette industry, but also people's lives. Nicotine content in one Juul pod is equivalent to those in a pack of 10 cigarettes. Addiction thus becomes a serious health problem, in particular to children and teens who obtain Juuls secondhand. Juul marketing plays to their vulnerability with flavors such as watermelon and strawberry lemonade. What can we make as an add-on to reduce nicotine dependence and allow smokers to quit smoking by transitioning using Juul?
